@@ -11,7 +11,6 @@ export const MovieScreen = () => {
   const { data, loading, error } = useQuery(GET_MOVIE_BY_ID, {
     variables: { imdbId: params.id as string },
   });
-  console.log(data);
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
   return (
