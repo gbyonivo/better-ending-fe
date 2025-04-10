@@ -1,43 +1,28 @@
 import { gql } from "@apollo/client";
 
-export const MOVIE_DETAILS = gql`
-  fragment MovieDetails on Movie {
+export const MOVIE_DETAILS = `
     Title
     Year
     Rated
     Released
     Runtime
     Genre
-    Director
-    Writer
-    Actors
-    Plot
-    Language
-    Country
-    Awards
-    Poster
-    Ratings
-    Metascore
-    imdbRating
-    imdbVotes
     imdbID
-    Type
-    DVD
-    BoxOffice
-    Production
-    Website
-    Response
-  }
+    Poster
 `;
 
 export const GET_MOVIE = gql`
   query MovieByName($name: String) {
     movieByName(name: $name) {
-      Title
-      Year
-      imdbID
-      Type
-      Poster
+      ${MOVIE_DETAILS}
+    }
+  }
+`;
+
+export const GET_MOVIE_BY_ID = gql`
+  query MovieById($imdbId: String) {
+    movieById(imdbId: $imdbId) {
+      ${MOVIE_DETAILS}
     }
   }
 `;
