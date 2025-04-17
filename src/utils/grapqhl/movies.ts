@@ -1,14 +1,15 @@
 import { gql } from "@apollo/client";
 
 export const MOVIE_DETAILS = `
-    Title
-    Year
-    Rated
-    Released
-    Runtime
-    Genre
-    imdbID
-    Poster
+    title
+    year
+    rated
+    released
+    runtime
+    genre
+    imdbId
+    poster
+    plot
 `;
 
 export const GET_MOVIE = gql`
