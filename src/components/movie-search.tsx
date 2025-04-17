@@ -4,18 +4,13 @@ import { Description, Field, Input, Label } from "@headlessui/react";
 import clsx from "clsx";
 
 import { GET_MOVIE } from "@/utils/grapqhl/movies";
-import { useQuery } from "@apollo/client";
 import { useState } from "react";
 import { Movie } from "@/types/movie";
 import { MovieItem } from "./movie-item";
+import { DataComponent } from "./elements/data-component";
 export function MovieSearch() {
   const [search, setSearch] = useState("Jaws");
   const [tempSearchValue, setTempSearchValue] = useState("");
-
-  const { data, loading, error } = useQuery<{ movieByName: Movie }>(GET_MOVIE, {
-    variables: { name: search },
-    skip: !search,
-  });
 
   return (
     <div className="w-64">
@@ -32,9 +27,8 @@ export function MovieSearch() {
             )}
             onChange={(e) => setTempSearchValue(e.target.value)}
             value={tempSearchValue}
-            disabled={loading}
             onKeyUp={(e) => {
-              if (loading || tempSearchValue.trim().length === 0) return;
+              if (tempSearchValue.trim().length === 0) return;
               if (e.key === "Enter") {
                 setSearch(tempSearchValue);
               }
@@ -42,9 +36,12 @@ export function MovieSearch() {
           />
         </div>
       </Field>
-      {loading && <div>Loading...</div>}
-      {error && <div>Error: {error.message}</div>}
-      {data && <MovieItem movie={data.movieByName} className="mt-8" />}
+      <DataComponent<Movie>
+        graphqlQuery={GET_MOVIE}
+        dataKey="movieByName"
+        variables={{ name: search }}
+        Component={({ data }) => <MovieItem movie={data} className="mt-8" />}
+      />
     </div>
   );
 }

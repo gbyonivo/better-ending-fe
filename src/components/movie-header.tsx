@@ -9,15 +9,16 @@ export const MovieHeader = ({ movie }: MovieHeaderProps) => {
   return (
     <div className="flex space-x-4 p-2 bg-white/3 rounded-lg">
       <img
-        src={movie.Poster}
-        alt={movie.Title}
+        src={movie.poster}
+        alt={movie.title}
         className="h-24 w-24 rounded-lg"
       />
       <div className="flex flex-col">
-        <h1 className="text-2xl font-bold">{movie.Title}</h1>
-        <MovieItemDescription label="Year" value={movie.Year} row />
-        <MovieItemDescription label="Rated" value={movie.Rated} row />
-        <MovieItemDescription label="Runtime" value={movie.Runtime} row />
+        <h1 className="text-2xl font-bold">{movie.title}</h1>
+        <MovieItemDescription label="Year" value={movie.year} row />
+        <MovieItemDescription label="Rated" value={movie.rated} row />
+        <MovieItemDescription label="Runtime" value={movie.runtime} row />
+        <MovieItemDescription label="Plot" value={movie.plot} row />
       </div>
     </div>
   );

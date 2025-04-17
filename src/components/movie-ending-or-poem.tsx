@@ -1,11 +1,18 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
+import { MovieEnding } from "./movie-ending";
+import { MoviePlot } from "./movie-plot";
 
 const categories = [
-  { name: "Ending", posts: [] },
-  { name: "Poem", posts: [] },
+  { name: "Ending", Component: MovieEnding },
+  { name: "Poem", Component: MovieEnding },
+  { name: "Plot", Component: MoviePlot },
 ];
 
-export const MovieEndingOrPoem = () => {
+interface Props {
+  imdbId: string;
+}
+
+export const MovieEndingOrPoem = ({ imdbId }: Props) => {
   return (
     <TabGroup>
       <TabList className="flex gap-4">
@@ -19,9 +26,9 @@ export const MovieEndingOrPoem = () => {
         ))}
       </TabList>
       <TabPanels className="mt-3">
-        {categories.map(({ name }) => (
+        {categories.map(({ name, Component }) => (
           <TabPanel key={name} className="rounded-xl bg-white/5 p-3 h-96">
-            {name}
+            <Component imdbId={imdbId} />
           </TabPanel>
         ))}
       </TabPanels>
