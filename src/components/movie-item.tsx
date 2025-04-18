@@ -3,7 +3,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { Movie } from "@/types/movie";
 import { MovieItemDescription } from "./movie-item-description";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { ClickableText } from "./elements/clickable-text";
 
 interface MovieItemProps {
   movie: Movie;
@@ -11,6 +12,7 @@ interface MovieItemProps {
 }
 
 export const MovieItem = ({ movie, className }: MovieItemProps) => {
+  const router = useRouter();
   return (
     <div className={`${className} flex justify-center`}>
       <div className="flex flex-col">
@@ -26,12 +28,10 @@ export const MovieItem = ({ movie, className }: MovieItemProps) => {
           <MovieItemDescription label="Plot" value={movie.plot} />
         </div>
         <div className="mt-4">
-          <Link
-            href={`/movie/${movie.imdbId}`}
-            className="text-xs text-white/50"
-          >
-            View Details
-          </Link>
+          <ClickableText
+            onClick={() => router.push(`/movie/${movie.imdbId}`)}
+            text="View Details"
+          />
         </div>
       </div>
     </div>
