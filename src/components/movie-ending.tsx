@@ -14,7 +14,7 @@ export const MovieEnding = ({ imdbId }: Props) => {
         graphqlQuery={GET_MOVIE_ENDING}
         variables={{ imdbId }}
         dataKey="endings"
-        Component={({ data }) => <MovieEndingsSwitch endings={data} />}
+        render={(data) => <MovieEndingsSwitch endings={data} />}
       />
     </div>
   );

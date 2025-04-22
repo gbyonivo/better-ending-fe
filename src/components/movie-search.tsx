@@ -58,7 +58,7 @@ export function MovieSearch() {
         graphqlQuery={GET_MOVIE}
         dataKey="movieByName"
         variables={{ name: search }}
-        Component={({ data }) => <MovieItem movie={data} className="mt-8" />}
+        render={(data) => <MovieItem movie={data} className="mt-8" />}
       />
     </div>
   );

@@ -13,7 +13,7 @@ export const MoviePlot = ({ imdbId }: Props) => {
     <DataComponent<Movie>
       graphqlQuery={GET_MOVIE_BY_ID}
       variables={variables}
-      Component={({ data }) => <div>{data.plot}</div>}
+      render={(data) => <div>{data.plot}</div>}
       dataKey="movieById"
     />
   );
