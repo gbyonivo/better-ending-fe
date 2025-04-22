@@ -1,5 +1,6 @@
 "use client";
 
+import { GoogleOAuth } from "@/context/google-oauth";
 import { Apollo } from "../context/apollo";
 
 interface Props {
@@ -7,5 +8,9 @@ interface Props {
 }
 
 export function Providers({ children }: Props) {
-  return <Apollo>{children}</Apollo>;
+  return (
+    <GoogleOAuth>
+      <Apollo>{children}</Apollo>
+    </GoogleOAuth>
+  );
 }

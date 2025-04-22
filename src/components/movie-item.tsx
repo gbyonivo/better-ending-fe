@@ -5,6 +5,7 @@ import { Movie } from "@/types/movie";
 import { MovieItemDescription } from "./movie-item-description";
 import { useRouter } from "next/navigation";
 import { ClickableText } from "./elements/clickable-text";
+// import { useLogin } from "@/hooks/use-login";
 
 interface MovieItemProps {
   movie: Movie;
@@ -13,6 +14,7 @@ interface MovieItemProps {
 
 export const MovieItem = ({ movie, className }: MovieItemProps) => {
   const router = useRouter();
+  // const login = useLogin();
   return (
     <div className={`${className} flex justify-center`}>
       <div className="flex flex-col">
@@ -29,7 +31,10 @@ export const MovieItem = ({ movie, className }: MovieItemProps) => {
         </div>
         <div className="mt-4">
           <ClickableText
-            onClick={() => router.push(`/movie/${movie.imdbId}`)}
+            onClick={() => {
+              // login();
+              router.push(`/movie/${movie.imdbId}`);
+            }}
             text="View Details"
           />
         </div>

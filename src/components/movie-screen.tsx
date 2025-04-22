@@ -16,7 +16,7 @@ export const MovieScreen = () => {
       graphqlQuery={GET_MOVIE_BY_ID}
       variables={{ imdbId: params.id as string }}
       dataKey="movieById"
-      Component={({ data }) => (
+      render={(data) => (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:py-8">
           <div className="col-span-2 col-start-2 w-full rounded-lg flex flex-col gap-4">
             <MovieHeader movie={data} />
