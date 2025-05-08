@@ -1,7 +1,7 @@
 import { Ending } from "@/types/ending";
 import { GET_MOVIE_ENDING } from "@/utils/grapqhl/ending";
 import { MovieEndingsSwitch } from "./movie-endings-switch";
-import { DataComponent } from "./common/data-component";
+import { DataComponent } from "../common/data-component";
 
 interface Props {
   imdbId: string;

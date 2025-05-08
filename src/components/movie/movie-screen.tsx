@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import { MovieHeader } from "./movie-header";
 import { MovieEndingOrPoem } from "./movie-ending-or-poem";
 import { Movie } from "@/types/movie";
-import { DataComponent } from "./common/data-component";
+import { DataComponent } from "../common/data-component";
 
 export const MovieScreen = () => {
   const params = useParams();

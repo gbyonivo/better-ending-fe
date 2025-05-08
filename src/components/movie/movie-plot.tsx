@@ -1,5 +1,5 @@
 import { GET_MOVIE_BY_ID } from "@/utils/grapqhl/movies";
-import { DataComponent } from "./common/data-component";
+import { DataComponent } from "../common/data-component";
 import { useMemo } from "react";
 import { Movie } from "@/types/movie";
 
