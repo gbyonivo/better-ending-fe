@@ -7,7 +7,7 @@ import {
 import React from "react";
 
 const httpLink = createHttpLink({
-  uri: `http://localhost:4000`,
+  uri: `http://localhost:4040`,
 });
 
 interface Props {
