@@ -1,7 +1,7 @@
 import { Movie } from "@/types/movie";
 import { MovieItemDescription } from "./movie-item-description";
 import { useRouter } from "next/navigation";
-import { ClickableText } from "./common/clickable-text";
+import { ClickableText } from "../common/clickable-text";
 
 interface MovieHeaderProps {
   movie: Movie;

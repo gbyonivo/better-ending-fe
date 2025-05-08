@@ -7,7 +7,7 @@ import { GET_MOVIE } from "@/utils/grapqhl/movies";
 import { useCallback, useState } from "react";
 import { Movie } from "@/types/movie";
 import { MovieItem } from "./movie-item";
-import { DataComponent } from "./common/data-component";
+import { DataComponent } from "../common/data-component";
 import { useRouter } from "next/navigation";
 import { usePathname, useSearchParams } from "next/navigation";
 
