@@ -20,9 +20,11 @@ export function SearchParams({
   label,
   subLabel,
 }: SearchProps) {
-  const [tempSearchValue, setTempSearchValue] = useState("");
-  const pathname = usePathname();
   const searchParams = useSearchParams();
+  const [tempSearchValue, setTempSearchValue] = useState(
+    () => searchParams.get(searchKey) || ""
+  );
+  const pathname = usePathname();
   const router = useRouter();
   const [search, setSearch] = useState(searchParams.get(searchKey) || "");
 
@@ -36,7 +38,7 @@ export function SearchParams({
   );
 
   return (
-    <div className="w-64">
+    <div className="sm:w-96">
       <Field>
         <Label className="text-sm/6 font-medium text-white">{label}</Label>
         <Description className="text-sm/6 text-white/50">
