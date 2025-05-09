@@ -32,10 +32,10 @@ export const WeatherResultItem = ({ weather }: WeatherResultItemProps) => {
   }, [weather]);
 
   return (
-    <div className="w-full">
+    <div className="w-64 sm:w-full">
       <div className="bg-blue-800 text-white relative min-w-0 break-words rounded-lg overflow-hidden shadow-sm p-4 w-full">
         <div className="p-2 relative">
-          <div className="flex mb-4 justify-between items-center">
+          <div className="sm:flex mb-4 justify-between items-center">
             <div>
               <h5 className="mb-0 font-medium text-xl">
                 {weather.name}, {weather.sys.country}
@@ -48,7 +48,7 @@ export const WeatherResultItem = ({ weather }: WeatherResultItemProps) => {
               </h6>
             </div>
             <div className="text-right">
-              <h3 className="font-bold text-4xl mb-0">
+              <h3 className="font-bold text-4xl mb-0 text-left sm:text-left">
                 <span>{weather.main.temp}&deg;</span>
               </h3>
             </div>
@@ -81,7 +81,7 @@ export const WeatherResultItem = ({ weather }: WeatherResultItemProps) => {
           className="mx-2 text-xs"
           render={(dailyWeather) => (
             <div className="flex flex-row justify-between">
-              {dailyWeather.slice(1, 4).map((daily) => (
+              {(dailyWeather.daily || []).slice(1, 4).map((daily) => (
                 <WeatherNextDays
                   key={daily.dt}
                   dt={daily.dt}

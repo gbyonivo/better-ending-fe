@@ -1,6 +1,6 @@
 import { setDailyWeather } from "@/lib/slices/weather";
 import { useEffect, useMemo } from "react";
-import { Coordinates, DailyWeather } from "@/types/weather";
+import { Coordinates, DailyWeatherResponse } from "@/types/weather";
 import axios from "axios";
 import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +11,7 @@ import { createDailyWeatherKey } from "@/utils/weather";
 interface WeatherDailyContainerProps {
   coordinates: Coordinates;
   className?: string;
-  render: (dailyWeather: DailyWeather[]) => React.ReactNode;
+  render: (dailyWeather: DailyWeatherResponse) => React.ReactNode;
 }
 
 export function WeatherDailyContainer({
@@ -36,7 +36,7 @@ export function WeatherDailyContainer({
   );
 
   const fetchDailyWeather = useCallback(() => {
-    if (!coordinates.lat || !coordinates.lon || dailyWeather.length > 0) return;
+    if (!coordinates.lat || !coordinates.lon || dailyWeather.daily) return;
     const fetchDaily = async () => {
       try {
         setFetching(true);
