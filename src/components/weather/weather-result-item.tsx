@@ -1,14 +1,21 @@
 import { formatDate } from "@/utils/date";
-import { Weather } from "@/types/weather";
+import { Coordinates, Weather } from "@/types/weather";
 import { WeatherDesciptionItem } from "./weather-description-line";
 import { ClickableText } from "../common/clickable-text";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { WeatherDailyContainer } from "./weather-daily-container";
+import { WeatherNextDays } from "./weather-next-day";
 
 interface WeatherResultItemProps {
   weather: Weather;
 }
 
 export const WeatherResultItem = ({ weather }: WeatherResultItemProps) => {
+  const [coordinates, setCoordinates] = useState<Coordinates>({
+    lat: null,
+    lon: null,
+  });
   const router = useRouter();
   const descriptionLines = [
     { label: "Temp", description: weather.main.temp },
@@ -16,6 +23,13 @@ export const WeatherResultItem = ({ weather }: WeatherResultItemProps) => {
     { label: "Temp min", description: weather.main.temp_min },
     { label: "Temp max", description: weather.main.temp_max },
   ];
+
+  useEffect(() => {
+    setCoordinates({
+      lat: null,
+      lon: null,
+    });
+  }, [weather]);
 
   return (
     <div className="w-full">
@@ -28,7 +42,7 @@ export const WeatherResultItem = ({ weather }: WeatherResultItemProps) => {
               </h5>
               <h6 className="mb-0">
                 {formatDate({
-                  date: weather.dt,
+                  date: weather.dt * 1000,
                   formatString: "MMMM dd",
                 })}
               </h6>
@@ -53,16 +67,36 @@ export const WeatherResultItem = ({ weather }: WeatherResultItemProps) => {
           <span className="inline-block">
             <ClickableText
               onClick={() => {
-                // fetch 3 day forecast
+                setCoordinates({
+                  lat: weather.coord.lat,
+                  lon: weather.coord.lon,
+                });
               }}
               text="See 3 Day Forecast"
             />
           </span>
         </div>
+        <WeatherDailyContainer
+          coordinates={coordinates}
+          className="mx-2 text-xs"
+          render={(dailyWeather) => (
+            <div className="flex flex-row justify-between">
+              {dailyWeather.slice(1, 4).map((daily) => (
+                <WeatherNextDays
+                  key={daily.dt}
+                  dt={daily.dt}
+                  temp={daily.temp.day}
+                />
+              ))}
+            </div>
+          )}
+        />
       </div>
       <ClickableText
         onClick={() => {
-          router.push(`/weather/${weather.name}`);
+          router.push(
+            `/weather/${weather.name}?lat=${weather.coord.lat}&lon=${weather.coord.lon}`
+          );
         }}
         className="mt-4 text-right"
         text="See Detailed Forecast"

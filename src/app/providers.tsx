@@ -2,6 +2,7 @@
 
 import { GoogleOAuth } from "@/context/google-oauth";
 import { Apollo } from "../context/apollo";
+import StoreProvider from "@/context/store";
 
 interface Props {
   children: React.ReactNode;
@@ -9,8 +10,10 @@ interface Props {
 
 export function Providers({ children }: Props) {
   return (
-    <GoogleOAuth>
-      <Apollo>{children}</Apollo>
-    </GoogleOAuth>
+    <StoreProvider>
+      <GoogleOAuth>
+        <Apollo>{children}</Apollo>
+      </GoogleOAuth>
+    </StoreProvider>
   );
 }
