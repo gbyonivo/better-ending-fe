@@ -7,7 +7,6 @@ interface Props {
 
 export function GoogleOAuth({ children }: Props) {
   const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!;
-
   return (
     <GoogleOAuthProvider clientId={clientId}>{children}</GoogleOAuthProvider>
   );

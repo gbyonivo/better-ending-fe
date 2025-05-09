@@ -13,7 +13,7 @@ const initialState: WeatherState = {
 };
 
 export const weatherSlice = createSlice({
-  name: "weather",
+  name: "_weather",
   initialState,
   reducers: {
     setDailyWeather: (
@@ -24,7 +24,7 @@ export const weatherSlice = createSlice({
         ...state,
         dailyWeatherRecord: {
           ...state.dailyWeatherRecord,
-          [createDailyWeatherKey(payload.lat, payload.lon)]: payload.daily,
+          [createDailyWeatherKey(payload.lat, payload.lon)]: payload,
         },
       };
     },
