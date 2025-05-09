@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 interface ClickableTextProps {
   text: string;
   onClick: () => void;
@@ -11,9 +13,10 @@ export const ClickableText = ({
 }: ClickableTextProps) => {
   return (
     <div
-      className={`text-xs text-gray-300 cursor-pointer hover:text-gray-400 ${
-        className || ""
-      }`}
+      className={clsx(
+        "text-xs text-gray-300 cursor-pointer hover:text-gray-400",
+        className
+      )}
     >
       <span className="inline-block underline" role="button" onClick={onClick}>
         {text}
