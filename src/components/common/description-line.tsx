@@ -1,12 +1,14 @@
-export const MovieItemDescription = ({
+interface DescriptionLineProps {
+  label?: string;
+  value: string | number;
+  row?: boolean;
+}
+
+export const DescriptionLine = ({
   label,
   value,
   row = false,
-}: {
-  label?: string;
-  value: string;
-  row?: boolean;
-}) => {
+}: DescriptionLineProps) => {
   if (!value) return null;
   const className = row ? "flex flex-row space-x-2" : "flex flex-col";
   return (

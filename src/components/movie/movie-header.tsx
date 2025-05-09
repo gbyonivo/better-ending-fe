@@ -1,11 +1,13 @@
 import { Movie } from "@/types/movie";
-import { MovieItemDescription } from "./movie-item-description";
 import { useRouter } from "next/navigation";
 import { ClickableText } from "../common/clickable-text";
+import { DescriptionLine } from "../common/description-line";
 
 interface MovieHeaderProps {
   movie: Movie;
 }
+
+// todo: handle image the way Next wants me to handle it
 
 export const MovieHeader = ({ movie }: MovieHeaderProps) => {
   const router = useRouter();
@@ -20,9 +22,9 @@ export const MovieHeader = ({ movie }: MovieHeaderProps) => {
         />
         <div className="flex flex-col">
           <h1 className="text-2xl font-bold">{movie.title}</h1>
-          <MovieItemDescription label="Year" value={movie.year} row />
-          <MovieItemDescription label="Rated" value={movie.rated} row />
-          <MovieItemDescription label="Runtime" value={movie.runtime} row />
+          <DescriptionLine label="Year" value={movie.year} row />
+          <DescriptionLine label="Rated" value={movie.rated} row />
+          <DescriptionLine label="Runtime" value={movie.runtime} row />
         </div>
       </div>
     </div>

@@ -32,6 +32,7 @@ export function weatherReducer(
         return {
           ...state,
           weather: payload,
+          fetching: false,
           cache: {
             ...state.cache,
             [payload.name.toLowerCase()]: payload,

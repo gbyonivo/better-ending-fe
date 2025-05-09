@@ -3,8 +3,8 @@ import { WeatherContainer } from "@/components/weather/weather-container";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 
 const tabs = [
-  { name: "Movies", Component: MovieSearch },
   { name: "Weather", Component: WeatherContainer },
+  { name: "Movies", Component: MovieSearch },
 ];
 
 export default function Home() {

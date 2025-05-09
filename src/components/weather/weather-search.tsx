@@ -9,7 +9,7 @@ export function WeatherSearch() {
       searchKey="city"
       label="City"
       subLabel="Enter Name of City"
-      render={(search) => <WeatherResult city={search} />}
+      render={(search) => <WeatherResult city={search} className="mt-4" />}
     />
   );
 }

@@ -2,9 +2,9 @@
 
 /* eslint-disable @next/next/no-img-element */
 import { Movie } from "@/types/movie";
-import { MovieItemDescription } from "./movie-item-description";
 import { useRouter } from "next/navigation";
 import { ClickableText } from "../common/clickable-text";
+import { DescriptionLine } from "../common/description-line";
 // import { useLogin } from "@/hooks/use-login";
 
 interface MovieItemProps {
@@ -24,10 +24,10 @@ export const MovieItem = ({ movie, className }: MovieItemProps) => {
           className="w-64 h-64 mb-4 rounded-lg"
         />
         <div className="flex flex-col gap-2">
-          <MovieItemDescription label="Title" value={movie.title} />
-          <MovieItemDescription label="Genre" value={movie.genre} />
-          <MovieItemDescription label="Year" value={movie.year} />
-          <MovieItemDescription label="Plot" value={movie.plot} />
+          <DescriptionLine label="Title" value={movie.title} />
+          <DescriptionLine label="Genre" value={movie.genre} />
+          <DescriptionLine label="Year" value={movie.year} />
+          <DescriptionLine label="Plot" value={movie.plot} />
         </div>
         <div className="mt-4">
           <ClickableText
